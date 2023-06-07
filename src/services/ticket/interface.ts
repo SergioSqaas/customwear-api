@@ -15,7 +15,7 @@ export const TicketPartialSchema = Type.Partial(TicketSchema);
 export type TicketPartialType = Static<typeof TicketPartialSchema>;
 
 export const TicketParamsSchema = Type.Object({
-  TicketId: Type.String(),
+    ticketId: Type.String(),
 });
 
 export type TicketParamsType = Static<typeof TicketParamsSchema>;

@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { TicketManager } from "./manager";
 import { TicketController } from "./controller";
-import { TicketParamsSchema, TicketSchema } from "./interface";
+import { TicketParamsSchema, TicketPartialSchema, TicketSchema } from "./interface";
 import { UserManager } from "../user";
 
 export async function OrganizationRouter(
@@ -19,7 +19,7 @@ export async function OrganizationRouter(
   );
 
   fastify.post(
-    "/user",
+    "/ticket",
     {
         schema: {
           body: TicketSchema,
@@ -29,13 +29,24 @@ export async function OrganizationRouter(
   );
 
   fastify.get(
-    "/user",
+    "/ticket",
     {
         schema: {
           params: TicketParamsSchema,
         },
     },
     TicketController.getTicketById
+  );
+
+  fastify.put(
+    "/ticket/:ticketId",
+    {
+        schema: {
+          body: TicketPartialSchema,
+          params: TicketParamsSchema,
+        },
+    },
+    TicketController.updateTicket
   );
 
 }

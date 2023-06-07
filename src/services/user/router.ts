@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { UserManager } from "./manager";
 import { UserController } from "./controller";
-import { UserParamsSchema, UserSchema } from "./interface";
+import { UserParamsSchema, UserPartialSchema, UserSchema } from "./interface";
 
 export async function OrganizationRouter(
   fastify: FastifyInstance
@@ -26,13 +26,14 @@ export async function OrganizationRouter(
   );
 
   fastify.get(
-    "/user",
+    "/user/:userId",
     {
         schema: {
           params: UserParamsSchema,
+          body: UserPartialSchema,
         },
     },
-    UserController.getUserById
+    UserController.updateUser
   );
 
 }

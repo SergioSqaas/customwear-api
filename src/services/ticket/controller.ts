@@ -13,8 +13,8 @@ export class TicketController {
   public static getTicketById = async (req: FastifyRequest<{
     Params: TicketParamsType;
   }>, reply: FastifyReply) => {
-    const { TicketId } = req.params;
-    const ticket = await req.ticketManager.getTicketById(TicketId);
+    const { ticketId } = req.params;
+    const ticket = await req.ticketManager.getTicketById(ticketId);
     if (ticket) {
       reply.send(ticket);
     } else {
@@ -41,9 +41,9 @@ export class TicketController {
     Params: TicketParamsType;
     Body: TicketPartialType;
   }>, reply: FastifyReply) => {
-    const { TicketId } = req.params;
+    const { ticketId } = req.params;
     const { totalAmount, status} = req.body
-    const ticket = await req.ticketManager.updateTicket(TicketId, { totalAmount, status: TicketStatus[status as keyof typeof TicketStatus]});
+    const ticket = await req.ticketManager.updateTicket(ticketId, { totalAmount, status: TicketStatus[status as keyof typeof TicketStatus]});
     if (ticket) {
       reply.send(ticket);
     } else {
