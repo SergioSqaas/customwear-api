@@ -1,7 +1,7 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { TicketParamsType, TicketPartialType, TicketType } from './interface';
 import { TicketStatus } from './entity';
-import { stat } from 'fs/promises';
+
 
 export class TicketController {
 

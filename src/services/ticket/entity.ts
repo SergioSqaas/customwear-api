@@ -1,7 +1,7 @@
 import { Entity, Property, OneToOne, ManyToOne, ManyToMany, Collection, PrimaryKey } from '@mikro-orm/core';
 import { Order } from '../order/entity/entity';
 import { User } from '../user/entity';
-import { Product } from '../product/entity/entity';
+import { Product } from '../product/entity';
 import { BaseEntity } from '../../plugin/baseEntity'
 
 @Entity()

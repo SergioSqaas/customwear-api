@@ -33,12 +33,12 @@ export class TicketManager {
         const ticket = new Ticket(data);
         await this.ticketRepository.getEntityManager().persistAndFlush(ticket)
         this.logger.info(
-            `OrganizationManager - add - Success ID: ${ticket.id}`
+            `TicketManager - add - Success ID: ${ticket.id}`
         );
         return ticket;
         
     } catch (error) {
-        this.logger.error(`UserManager - create - Error: ${error}`);
+        this.logger.error(`TicketManager - create - Error: ${error}`);
     }
   }
 
